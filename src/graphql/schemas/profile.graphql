@@ -7,13 +7,26 @@ input ProfileInput {
   name: String!
 }
 
+input PageInput {
+  page: Int
+  size: Int
+  order: String
+  descingOrder: Boolean
+}
+
+input PageProfileInput {
+  id: ID
+  name: String
+}
+
 type Query {
-  profile(id: ID!): Profile
-  profiles: [Profile]
+  showProfile(id: ID!): Profile
+  listProfiles: [Profile]
+  pageProfiles(input: PageProfileInput!, inputPage: PageInput!): [Profile]
 }
 
 type Mutation {
   createProfile(input: ProfileInput!): Profile
   updateProfile(id: ID!, input: ProfileInput!): Profile
-  # deleteProfile(id: ID!)
+  deleteProfile(id: ID!): Profile
 }

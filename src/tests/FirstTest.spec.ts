@@ -1,7 +1,7 @@
-import { User } from '@/entities/user'
+import { User } from '@/models/user'
 
 test('espera ...', () => {
   const user = new User()
-  user.name = 'Nelis'
-  expect(user.name).toEqual('Nelis')
+  user.name = 'Teste'
+  expect(user.name).toEqual('Teste')
 })

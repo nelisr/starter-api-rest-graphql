@@ -1,5 +1,6 @@
 import { User } from '@/models/user'
 import { UserRepository } from '@/repositories/user.repository'
+import { ProfileRepository } from '@/repositories/profile.repository'
 import { getCustomRepository } from 'typeorm'
 import { IUserInput } from '@/interfaces/user-input.interface'
 import { IPageInput } from '@/interfaces/page-input.interface'
@@ -34,8 +35,18 @@ export class UserService {
 
   public async create (data: User): Promise<User> {
     try {
+      const { name, email, password, profile_id } = data
+      const profileRepository = getCustomRepository(ProfileRepository)
+      const profile = await profileRepository.findOneOrFail(profile_id)
       const repository = getCustomRepository(UserRepository)
-      return await repository.save(data)
+
+      const body = new User()
+      body.name = name
+      body.email = email
+      body.password = password
+      body.profile = profile
+
+      return await repository.save(body)
     } catch (err) {
       throw new Error(err)
     }

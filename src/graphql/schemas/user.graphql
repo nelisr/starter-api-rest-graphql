@@ -2,12 +2,14 @@ type User {
   id: Int!
   name: String!
   email: String!
+  profile: Profile
 }
 
 input UserInput {
   name: String!
   email: String!
   password: String!
+  profile_id: Int!
 }
 
 input PageInput {
@@ -30,7 +32,7 @@ type Query {
 }
 
 type Mutation {
-  createUser(input: UserInput!): User
-  updateUser(id: ID!, input: UserInput!): User
+  createUser(input: UserInput!): User!
+  updateUser(id: ID!, input: UserInput!): User!
   deleteUser(id: ID!): User
 }

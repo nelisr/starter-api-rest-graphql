@@ -1,0 +1,319 @@
+{
+	"info": {
+		"_postman_id": "e1f27bab-0be5-44bc-8b2f-eded885e85a3",
+		"name": "Starter Node TS API REST GRAPHQL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "profiles",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation createProfile($input: ProfileInput!){\n    createProfile(input: $input) {        \n        id name\n    }\n}",
+								"variables": "{\n \"input\":{\n    \"name\": \"Editor\"\n }\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:3333/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation updateProfile($id: ID!, $input: ProfileInput!){\n    updateProfile(id: $id, input: $input) {        \n        id name\n    }\n}",
+								"variables": "{\n \"id\": 3,\n \"input\":{\n    \"name\": \"Super Administrador\"\n }\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:3333/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query listProfiles{\n    listProfiles {  \n        id      \n        name\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:3333/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Page",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query pageProfiles($input: PageProfileInput!, $inputPage: PageInput!){\n    pageProfiles(input: $input, inputPage: $inputPage) {  \n        id      \n        name\n    }\n}",
+								"variables": "{\n    \"input\": {\n        \"id\": 1,\n        \"name\": \"\"\n    },\n    \"inputPage\": {\n        \"page\": 1,\n        \"size\": 10,\n        \"order\": \"name\",\n        \"descingOrder\": false\n    }\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:3333/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query showProfile($id: ID!){\n    showProfile(id: $id) {  \n        id      \n        name\n    }\n}",
+								"variables": "{\n    \"id\": 1\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:3333/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation deleteProfile($id: ID!){\n    deleteProfile(id: $id) {  \n        id      \n        name\n    }\n}",
+								"variables": "{\n    \"id\": 3\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:3333/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation createUser($input: UserInput!){\n    createUser(input: $input) {        \n        id name email\n    }\n}",
+								"variables": "{\n \"input\":{\n    \"name\": \"Nelis Rodrigues\",\n    \"email\": \"nelis.rodrigues@gmail.com\",\n    \"password\": \"nelis1234\"       \n }\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:3333/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation updateUser($id: ID!, $input: UserInput!){\n    updateUser(id: $id, input: $input) {        \n        id name email\n    }\n}",
+								"variables": "{\n \"id\": 3,   \n \"input\":{\n    \"name\": \"Nelis Rodrigues\",\n    \"email\": \"nelis.rodrigues@gmail.com\",\n    \"password\": \"nelis1234\"       \n }\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:3333/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query listUsers{\n    listUsers {  \n        id      \n        name\n        email\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:3333/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Page",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query pageUsers($input: PageProfileInput!, $inputPage: PageInput!){\n    pageUsers(input: $input, inputPage: $inputPage) {  \n        id      \n        name\n    }\n}",
+								"variables": "{\n    \"input\": {\n        \"id\": 1,\n        \"name\": \"\"\n    },\n    \"inputPage\": {\n        \"page\": 1,\n        \"size\": 10,\n        \"order\": \"name\",\n        \"descingOrder\": false\n    }\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:3333/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query showUser($id: ID!){\n    showUser(id: $id) {  \n        id      \n        name\n    }\n}",
+								"variables": "{\n    \"id\": 1\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:3333/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation deleteUser($id: ID!){\n    deleteUser(id: $id) {  \n        id      \n        name\n    }\n}",
+								"variables": "{\n    \"id\": 3\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:3333/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

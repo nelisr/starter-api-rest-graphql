@@ -1,20 +1,27 @@
-const users = [
-  { id: 1, name: 'Nelis Rodrigues', email: 'nelis.rodriguess@gmail.com' },
-  { id: 2, name: 'Francisco Gomes', email: 'francisco.gomes@gmail.com' }
-]
+import { User } from '@/models/user'
+import UserService from '@/services/user.service'
 
 export const userResolver = {
   Query: {
-    users () {
-      return []
+    async showUser (_:any, { id }: any): Promise<User> {
+      return await UserService.show(id)
+    },
+    async listUsers (): Promise<User[]> {
+      return await UserService.list()
+    },
+    async pageUsers (_:any, { input, inputPage }: any): Promise<User[]> {
+      return await UserService.page(input, inputPage)
     }
   },
   Mutation: {
-    newUser (_: any, args: any) {
-      const { name, email } = args
-      users.push({ id: 3, name, email })
-
-      return users[users.length - 1]
+    async createUser (_:any, { input }: any): Promise<User> {
+      return await UserService.create(input)
+    },
+    async updateUser (_:any, { id, input }: any): Promise<User> {
+      return await UserService.update(id, input)
+    },
+    async deleteUser (_:any, { id }: any): Promise<User> {
+      return await UserService.delete(id)
     }
   }
 }

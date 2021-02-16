@@ -7,13 +7,30 @@ type User {
 input UserInput {
   name: String!
   email: String!
+  password: String!
 }
 
-type Mutation {
-  newUser(data: UserInput): User!
+input PageInput {
+  page: Int
+  size: Int
+  order: String
+  descingOrder: Boolean
+}
+
+input PageUserInput {
+  id: ID
+  name: String
+  email: String
 }
 
 type Query {
-  users: [User]
-  user(id: Int!): User
+  showUser(id: ID!): User
+  listUsers: [User]
+  pageUsers(input: PageUserInput!, inputPage: PageInput!): [User]
+}
+
+type Mutation {
+  createUser(input: UserInput!): User
+  updateUser(id: ID!, input: UserInput!): User
+  deleteUser(id: ID!): User
 }

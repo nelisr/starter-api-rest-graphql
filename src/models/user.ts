@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm'
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm'
 import { Profile } from './profile'
 
 @Entity({ name: 'tb_users', schema: 'security' })
@@ -14,6 +14,12 @@ export class User {
 
     @Column()
     password: string;
+
+    @CreateDateColumn({ name: 'created_at', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP(6)' })
+    public createdAt: Date;
+
+    @UpdateDateColumn({ name: 'updated_at', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP(6)', onUpdate: 'CURRENT_TIMESTAMP(6)' })
+    public updatedAt: Date;
 
     @ManyToOne(() => Profile, profile => profile.users, { nullable: false })
     @JoinColumn({ name: 'profile_id' })

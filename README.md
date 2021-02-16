@@ -13,7 +13,7 @@ Esse é um stater para criação de APIs REST e Graphql com Node e TypeScript.
 
 ## Usando
 
-1 - Baixar o projeto para seu ambiente de trabalho e instalar as dependências
+1 - Baixar o projeto em seu ambiente de trabalho e instalar as dependências
 
 ```
 yarn i
@@ -79,21 +79,26 @@ ou
 npm start
 ```
 
-### Todo
+## Collection
+
+Importe essa [collection](postman_collection.json) no Postman para saber quais o serviços REST e GRAPHQL que já existem.
+
+## Todo
 
 - Criar uma interface de paginação
 - Criar camadas de Autenticação e Autorização
 - Adicionar suporte a Docker
 - Melhorar o script de build
+- Watch alteração nos arquivos .graphql
 
-### Licença
+## Licença
 
 Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE.md](LICENSE.md) para detalhes
 
-### Contribuir
+## Contribuir
 
 Leia [CONTRIBUTING.md](CONTRIBUTING.md) para obter detalhes sobre nosso código de conduta e o processo de envio de solicitações pull para nós.
 
-### Versão
+## Versão
 
 1.0.0

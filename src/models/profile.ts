@@ -9,10 +9,10 @@ export class Profile {
     @Column({ unique: true })
     name: string;
 
-    @CreateDateColumn({ name: 'created_at', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP(6)' })
+    @CreateDateColumn({ name: 'created_at' })
     public createdAt: Date;
 
-    @UpdateDateColumn({ name: 'updated_at', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP(6)', onUpdate: 'CURRENT_TIMESTAMP(6)' })
+    @UpdateDateColumn({ name: 'updated_at' })
     public updatedAt: Date;
 
     @OneToMany(() => User, user => user.profile)

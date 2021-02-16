@@ -1,6 +1,5 @@
 import { User } from '@/models/user'
 import { UserRepository } from '@/repositories/user.repository'
-import { ProfileRepository } from '@/repositories/profile.repository'
 import { getCustomRepository } from 'typeorm'
 import { IUserInput } from '@/interfaces/user-input.interface'
 import { IPageInput } from '@/interfaces/page-input.interface'
@@ -18,7 +17,11 @@ export class UserService {
   public async list (): Promise<User[]> {
     try {
       const repository = getCustomRepository(UserRepository)
-      return await repository.find()
+      return await repository
+        .createQueryBuilder('user')
+        .select(['user.id', 'user.name', 'user.email', 'profile'])
+        .innerJoin('user.profile', 'profile')
+        .getMany()
     } catch (err) {
       throw new Error(err)
     }
@@ -35,18 +38,9 @@ export class UserService {
 
   public async create (data: User): Promise<User> {
     try {
-      const { name, email, password, profile_id } = data
-      const profileRepository = getCustomRepository(ProfileRepository)
-      const profile = await profileRepository.findOneOrFail(profile_id)
       const repository = getCustomRepository(UserRepository)
 
-      const body = new User()
-      body.name = name
-      body.email = email
-      body.password = password
-      body.profile = profile
-
-      return await repository.save(body)
+      return await repository.save(data)
     } catch (err) {
       throw new Error(err)
     }
@@ -55,8 +49,8 @@ export class UserService {
   public async update (id: number, data: User): Promise<User> {
     try {
       const repository = getCustomRepository(UserRepository)
-      const User = await repository.findOneOrFail(id)
-      const body: any = { ...User, ...data }
+      const user = await repository.findOneOrFail(id)
+      const body: any = { ...user, ...data }
       return await repository.save(body)
     } catch (err) {
       throw new Error(err)

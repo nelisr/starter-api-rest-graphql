@@ -5,11 +5,16 @@ type User {
   profile: Profile
 }
 
-input UserInput {
+input InputProfile {
+  id: ID!
   name: String!
-  email: String!
-  password: String!
-  profile_id: Int!
+}
+
+input UserInput {
+  name: String
+  email: String
+  password: String
+  profile: InputProfile
 }
 
 input PageInput {

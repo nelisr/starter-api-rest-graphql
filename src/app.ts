@@ -3,7 +3,6 @@ import cors from 'cors'
 import { graphqlHTTP } from 'express-graphql'
 import { schemaWithResolvers } from './graphql'
 import Routes from './routes'
-
 import 'reflect-metadata'
 import { createConnection } from 'typeorm'
 
@@ -12,11 +11,9 @@ class App {
 
   public constructor () {
     this.express = express()
-
     this.middlewares()
     this.routes()
     this.graphql()
-
     this.database()
   }
 

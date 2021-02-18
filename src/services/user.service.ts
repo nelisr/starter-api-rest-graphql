@@ -3,6 +3,7 @@ import { UserRepository } from '@/repositories/user.repository'
 import { getCustomRepository } from 'typeorm'
 import { IUserInput } from '@/interfaces/user-input.interface'
 import { IPageInput } from '@/interfaces/page-input.interface'
+import bcrypt from 'bcrypt'
 
 export class UserService {
   public async page (input: IUserInput, inputPage: IPageInput): Promise<User[]> {
@@ -40,7 +41,18 @@ export class UserService {
     try {
       const repository = getCustomRepository(UserRepository)
 
-      return await repository.save(data)
+      const salt = bcrypt.genSaltSync()
+      const password = bcrypt.hashSync(data.password, salt)
+
+      const email = data.email.trim()
+
+      const body = {
+        ...data,
+        password,
+        email
+      }
+
+      return await repository.save(body)
     } catch (err) {
       throw new Error(err)
     }
@@ -50,7 +62,16 @@ export class UserService {
     try {
       const repository = getCustomRepository(UserRepository)
       const user = await repository.findOneOrFail(id)
-      const body: any = { ...user, ...data }
+
+      const email = data.email.trim()
+
+      const body1 = {
+        ...data,
+        email
+      }
+
+      const body: any = { ...user, ...body1 }
+
       return await repository.save(body)
     } catch (err) {
       throw new Error(err)

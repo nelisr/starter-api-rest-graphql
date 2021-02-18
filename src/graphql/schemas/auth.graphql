@@ -1,0 +1,17 @@
+type Auth {
+  email: String!
+  password: String!
+}
+
+input AuthInput {
+  email: String!
+  password: String!
+}
+
+type AuthResponse {
+  token: String!
+}
+
+type Query {
+  login(input: AuthInput!): AuthResponse!
+}

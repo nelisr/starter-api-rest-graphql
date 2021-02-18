@@ -86,10 +86,11 @@ Importe essa [collection](postman_collection.json) no Postman para saber quais o
 ## Todo
 
 - Criar uma interface de paginação
-- Criar camadas de Autenticação e Autorização
 - Adicionar suporte a Docker
 - Melhorar o script de build
 - Watch alteração nos arquivos .graphql
+- ajustar MER
+- verificar mensagens de erro com status correto para graphql
 
 ## Licença
 

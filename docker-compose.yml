@@ -1,0 +1,8 @@
+version: "3.7"
+services:
+  app:
+    container_name: boilerplate_rest_graphql_ts
+    build:
+      context: .
+    ports:
+      - "3333:3333"

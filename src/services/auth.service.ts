@@ -26,7 +26,7 @@ export class AuthService {
       const payload = { id: user.id, name: user.name, email: user.email, profile: user.profile.name }
       const expiresIn = JWT_TIME
       const algorithm = JWT_ALGORITHM
-      const token = jwt.sign(payload, secret, { expiresIn, algorithm })
+      const token = jwt.sign(payload, secret, { expiresIn: '30m', algorithm: 'HS256' })
 
       return { token }
     } catch (err) {

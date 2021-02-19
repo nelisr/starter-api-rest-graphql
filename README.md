@@ -9,6 +9,8 @@ Esse é um stater para criação de APIs REST e Graphql com Node e TypeScript.
 - Express
 - Graphql
 - TypeORM
+- Bcrypt
+- JWT
 - Jest
 
 ## Usando
@@ -25,22 +27,20 @@ ou
 npm i
 ```
 
-2 - Após instalar as dependências deve configurar o banco de dados no arquivo <code>ormconfig.json</code>
+2 - Após instalar as dependências deve configurar o banco de dados no arquivo <code>.env</code>
 
 ```
-{
-  "type": "postgres",
-  "host": "localhost",
-  "port": 5432,
-  "username": "postgres",
-  "password": "postgres",
-  "database": "nomedobancodedados",
-  "synchronize": true,
-  "logging": false,
-  "entities": ["src/models/**/*.ts"],
-  "migrations": ["src/migrations/**/*.ts"],
-  "subscribers": ["src/subscriber/**/*.ts"]
-}
+TYPEORM_CONNECTION=postgres
+TYPEORM_HOST=localhost
+TYPEORM_PORT=5432
+TYPEORM_USERNAME=postgres
+TYPEORM_PASSWORD=postgres
+TYPEORM_DATABASE=boilerplate-graphql-ts
+TYPEORM_SYNCHRONIZE=true
+TYPEORM_LOGGING=true
+TYPEORM_ENTITIES=src/models/**/*.ts
+TYPEORM_MIGRATIONS=src/migrations/**/*.ts
+TYPEORM_SUBSCRIBERS=src/subscriber/**/*.ts
 ```
 
 3 - Agora para estartar a aplicação em modo de desenvolvimento basta rodar o comando abaixo:
@@ -86,10 +86,6 @@ Importe essa [collection](postman_collection.json) no Postman para saber quais o
 ## Todo
 
 - Criar uma interface de paginação
-- Adicionar suporte a Docker
-- Melhorar o script de build
-- Watch alteração nos arquivos .graphql
-- ajustar MER
 - verificar mensagens de erro com status correto para graphql
 
 ## Licença

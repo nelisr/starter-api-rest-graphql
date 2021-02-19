@@ -16,9 +16,13 @@ export class AuthService {
         relations: ['profile'],
         select: ['id', 'name', 'email', 'password', 'profile']
       })
+
+      if (!user) {
+        throw new Error('Usuário/Senha inválidos')
+      }
       const comparePasswords = bcrypt.compareSync(password, user.password)
 
-      if (!user || !comparePasswords) {
+      if (!comparePasswords) {
         throw new Error('Usuário/Senha inválidos')
       }
 
@@ -26,7 +30,7 @@ export class AuthService {
       const payload = { id: user.id, name: user.name, email: user.email, profile: user.profile.name }
       const expiresIn = JWT_TIME
       const algorithm = JWT_ALGORITHM
-      const token = jwt.sign(payload, secret, { expiresIn: '30m', algorithm: 'HS256' })
+      const token = jwt.sign(payload, secret, { expiresIn, algorithm })
 
       return { token }
     } catch (err) {

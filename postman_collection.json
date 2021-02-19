@@ -17,7 +17,7 @@
 							"mode": "graphql",
 							"graphql": {
 								"query": "mutation createProfile($input: ProfileInput!){\n    createProfile(input: $input) {        \n        id name\n    }\n}",
-								"variables": "{\n \"input\":{\n    \"name\": \"Editor\"\n }\n}"
+								"variables": "{\n \"input\":{\n    \"name\": \"Administrador\"\n }\n}"
 							}
 						},
 						"url": {
@@ -171,8 +171,8 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "mutation createUser($input: UserInput!){\n    createUser(input: $input) {        \n        id name email\n    }\n}",
-								"variables": "{\n \"input\":{\n    \"name\": \"Nelis Rodrigues\",\n    \"email\": \"nelis.rodrigues@gmail.com\",\n    \"password\": \"nelis1234\"       \n }\n}"
+								"query": "mutation createUser($input: UserInput!){\n    createUser(input: $input) {        \n        id name email profile { id name }\n    }\n}",
+								"variables": "{\n \"input\":{\n    \"name\": \"Nelis Rodrigues\",\n    \"email\": \"nelis.rodriguess@gmail.com    \",\n    \"password\": \"nelisrodrigues2124\",\n    \"profile\": {\n        \"id\": 1,\n        \"name\": \"Administrador\"\n    }\n }\n}"
 							}
 						},
 						"url": {
@@ -197,7 +197,7 @@
 							"mode": "graphql",
 							"graphql": {
 								"query": "mutation updateUser($id: ID!, $input: UserInput!){\n    updateUser(id: $id, input: $input) {        \n        id name email\n    }\n}",
-								"variables": "{\n \"id\": 3,   \n \"input\":{\n    \"name\": \"Nelis Rodrigues\",\n    \"email\": \"nelis.rodrigues@gmail.com\",\n    \"password\": \"nelis1234\"       \n }\n}"
+								"variables": "{\n \"id\": 2,   \n \"input\":{\n    \"name\": \"Chico Robert\"        \n }\n}"
 							}
 						},
 						"url": {
@@ -221,7 +221,7 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "query listUsers{\n    listUsers {  \n        id      \n        name\n        email\n    }\n}",
+								"query": "query listUsers{\n    listUsers {  \n        id      \n        name\n        email        \n        profile {\n            id name\n        }\n    }\n}",
 								"variables": ""
 							}
 						},
@@ -298,6 +298,39 @@
 							"graphql": {
 								"query": "mutation deleteUser($id: ID!){\n    deleteUser(id: $id) {  \n        id      \n        name\n    }\n}",
 								"variables": "{\n    \"id\": 3\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:3333/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query login($input: AuthInput!) {\n    login(input: $input) {\n        token \n    }\n}",
+								"variables": "{\n    \"input\": {\n        \"email\": \"seuemail@gmail.com\",\n        \"password\": \"suasenha\"\n    }\n}"
 							}
 						},
 						"url": {

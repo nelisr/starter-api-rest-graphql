@@ -1,4 +1,4 @@
-import { Profile } from '@/models/profile'
+import Profile from '@/models/profile'
 import ProfileService from '@/services/profile.service'
 import { verifyToken } from '@/middlewares/authorization'
 

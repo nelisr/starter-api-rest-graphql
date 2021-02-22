@@ -1,4 +1,4 @@
-import { User } from '@/models/user'
+import User from '@/models/User'
 import { UserRepository } from '@/repositories/user.repository'
 import { getCustomRepository } from 'typeorm'
 import { IUserInput } from '@/interfaces/user-input.interface'

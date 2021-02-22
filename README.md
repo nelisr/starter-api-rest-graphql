@@ -30,17 +30,13 @@ npm i
 2 - Após instalar as dependências deve configurar o banco de dados no arquivo <code>.env</code>
 
 ```
-TYPEORM_CONNECTION=postgres
-TYPEORM_HOST=localhost
-TYPEORM_PORT=5432
-TYPEORM_USERNAME=postgres
-TYPEORM_PASSWORD=postgres
-TYPEORM_DATABASE=boilerplate-graphql-ts
-TYPEORM_SYNCHRONIZE=true
-TYPEORM_LOGGING=true
-TYPEORM_ENTITIES=src/models/**/*.ts
-TYPEORM_MIGRATIONS=src/migrations/**/*.ts
-TYPEORM_SUBSCRIBERS=src/subscriber/**/*.ts
+DB_CONNECTION=postgres
+DB_SCHEMA=nomeesquema # para Postgres
+DB_HOST=localhost
+DB_PORT=5432
+DB_USERNAME=postgres
+DB_PASSWORD=postgres
+DB_DATABASE=boilerplate-graphql-ts
 ```
 
 3 - Agora para estartar a aplicação em modo de desenvolvimento basta rodar o comando abaixo:

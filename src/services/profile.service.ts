@@ -1,4 +1,4 @@
-import { Profile } from '@/models/profile'
+import Profile from '@/models/profile'
 import { ProfileRepository } from '@/repositories/profile.repository'
 import { getCustomRepository } from 'typeorm'
 import { IProfileInput } from '@/interfaces/profile-input.interface'

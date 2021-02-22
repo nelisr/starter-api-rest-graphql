@@ -1,4 +1,4 @@
-import { User } from '@/models/user'
+import User from '@/models/User'
 import UserService from '@/services/user.service'
 import { verifyToken } from '@/middlewares/authorization'
 

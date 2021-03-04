@@ -12,6 +12,7 @@ input InputProfile {
 
 input UserInput {
   name: String
+  username: String
   email: String
   password: String
   profile: InputProfile

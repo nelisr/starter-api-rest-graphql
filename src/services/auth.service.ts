@@ -4,7 +4,8 @@ import { IAuthResponse } from '../interfaces/auth-response.interface'
 import { UserRepository } from '../repositories/user.repository'
 import { JWT_SECRET, JWT_TIME, JWT_ALGORITHM } from '@/config/config'
 import bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken'
+import jwt, { SignOptions } from 'jsonwebtoken'
+import ErrorHandler from '@/handlers/ErrorHandler'
 
 export class AuthService {
   public async login (input: IAuthInput): Promise<IAuthResponse> {
@@ -13,13 +14,13 @@ export class AuthService {
       const { email, password } = input
       const user = await repository.findOne({
         where: { email },
-        relations: ['profile'],
-        select: ['id', 'name', 'email', 'password', 'profile']
+        select: ['id', 'name', 'email', 'password']
       })
 
       if (!user) {
         throw new Error('Usuário/Senha inválidos')
       }
+
       const comparePasswords = bcrypt.compareSync(password, user.password)
 
       if (!comparePasswords) {
@@ -27,14 +28,14 @@ export class AuthService {
       }
 
       const secret = JWT_SECRET
-      const payload = { id: user.id, name: user.name, email: user.email, profile: user.profile.name }
+      const payload = { id: user.id, name: user.name, email: user.email }
       const expiresIn = JWT_TIME
       const algorithm = JWT_ALGORITHM
-      const token = jwt.sign(payload, secret, { expiresIn, algorithm })
+      const token = jwt.sign(payload, secret, { expiresIn, algorithm } as SignOptions)
 
       return { token }
     } catch (err) {
-      throw new Error(err)
+      throw new ErrorHandler('Unauthorized', 401, err.message)
     }
   }
 }

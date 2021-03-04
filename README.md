@@ -81,8 +81,10 @@ Importe essa [collection](postman_collection.json) no Postman para saber quais o
 
 ## Todo
 
+- Fazer mapeamento/relacionamento entidades
 - Criar uma interface de paginação
-- verificar mensagens de erro com status correto para graphql
+- Ver se é viável usar o celebrate para validar requisições
+- ver se é viável usar o class-validator para validar os models
 
 ## Licença
 

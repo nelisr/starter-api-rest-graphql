@@ -27,6 +27,10 @@ export class AuthService {
         throw new Error('Usuário/Senha inválidos')
       }
 
+      // verificar se o usuário tem acesso a essa aplicação
+      // adicionar no payload o id da aplicação e o ultimo acesso a aplicação
+      // sempre que der tudo certo nas verificaçõea anteriores deve ser criado um registro na tavela de logs de acesso
+
       const secret = JWT_SECRET
       const payload = { id: user.id, name: user.name, email: user.email }
       const expiresIn = JWT_TIME

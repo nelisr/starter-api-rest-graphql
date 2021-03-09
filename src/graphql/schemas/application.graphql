@@ -1,0 +1,37 @@
+type Application {
+  id: ID!
+  name: String!
+  initials: String!
+}
+
+input ApplicationInput {
+  name: String!
+  initials: String!
+}
+
+input PageInput {
+  page: Int
+  size: Int
+  order: String
+  descingOrder: Boolean
+}
+
+input PageApplicationInput {
+  name: String
+  initials: String
+}
+
+type Query {
+  showApplication(id: ID!): Application
+  listApplications: [Application]
+  pageApplications(
+    input: PageApplicationInput!
+    inputPage: PageInput!
+  ): [Application]
+}
+
+type Mutation {
+  createApplication(input: ApplicationInput!): Application
+  updateApplication(id: ID!, input: ApplicationInput!): Application
+  deleteApplication(id: ID!): Application
+}

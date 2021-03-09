@@ -24,6 +24,9 @@ export const verifyToken = async (req: Request) => {
     const token = authorization.replace('Bearer ', '')
 
     jwt.verify(token, secret, { algorithms: [JWT_ALGORITHM] } as VerifyOptions)
+
+    // verificar também se o ip da aplicacao do token é o mesmo da aplicação
+    // verificar se o perfil dele é de acordo
   } catch (err) {
     throw new ErrorHandler('Unauthorized', 401, err.message)
   }

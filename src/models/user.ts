@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm'
-import Profile from './Profile'
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm'
+import ControlProfile from './ControlProfile'
+import AuthLog from './AuthLog'
 
 @Entity({ name: 'tb_users', schema: 'manager' })
 export default class User {
@@ -18,9 +19,11 @@ export default class User {
     @Column({ nullable: false })
     password: string
 
-    @ManyToOne(() => Profile, profile => profile.users, { nullable: false })
-    @JoinColumn({ name: 'profile_id' })
-    profile: Profile;
+    @OneToMany(() => ControlProfile, pf => pf.user)
+    public controlProfile: ControlProfile[]
+
+    @OneToMany(() => AuthLog, pf => pf.user)
+    public authLog: AuthLog[]
 
     @CreateDateColumn({ name: 'created_at' })
     public createdAt: Date

@@ -14,7 +14,7 @@ export const DB_PORT = process.env.DB_PORT
 export const DB_USER = process.env.DB_USERNAME
 export const DB_PASSWORD = process.env.DB_PASSWORD
 export const DB_DATABASE = process.env.DB_DATABASE
-export const DB_SCHEMA = process.env.DB_SCHEMA
+export const DB_LOGGER = process.env.DB_LOGGER
 
 // JWT Settings
 export const JWT_SECRET = process.env.JWT_SECRET

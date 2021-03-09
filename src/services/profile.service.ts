@@ -1,4 +1,4 @@
-import Profile from '@/models/profile'
+import Profile from '@/models/Profile'
 import { ProfileRepository } from '@/repositories/profile.repository'
 import { getCustomRepository } from 'typeorm'
 import { IProfileInput } from '@/interfaces/profile-input.interface'
@@ -37,7 +37,7 @@ export class ProfileService {
       const repository = getCustomRepository(ProfileRepository)
       return await repository.save(data)
     } catch (err) {
-      throw new Error(err)
+      throw new Error(err.detail)
     }
   }
 

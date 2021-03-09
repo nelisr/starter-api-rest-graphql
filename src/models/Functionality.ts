@@ -1,9 +1,8 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm'
-import User from './User'
 import ProfileFunctionality from './ProfileFunctionality'
 
-@Entity({ name: 'tb_profiles', schema: 'manager' })
-export default class Profile {
+@Entity({ name: 'tb_functionalities', schema: 'manager' })
+export default class Functionality {
     @PrimaryGeneratedColumn()
     public id: number;
 
@@ -13,10 +12,7 @@ export default class Profile {
     @Column({ unique: true, nullable: false })
     public key: string;
 
-    @OneToMany(() => User, user => user.profile)
-    public users: User[]
-
-    @OneToMany(() => ProfileFunctionality, pf => pf.profile)
+    @OneToMany(() => ProfileFunctionality, pf => pf.functionality)
     public profileFunctionality: ProfileFunctionality[]
 
     @CreateDateColumn({ name: 'created_at' })

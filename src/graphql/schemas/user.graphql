@@ -7,7 +7,7 @@ type User {
 
 input InputProfile {
   id: ID!
-  name: String!
+  name: String
 }
 
 input UserInput {

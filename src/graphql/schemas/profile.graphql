@@ -1,10 +1,12 @@
 type Profile {
   id: ID!
   name: String!
+  key: String!
 }
 
 input ProfileInput {
   name: String!
+  key: String!
 }
 
 input PageInput {

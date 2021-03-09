@@ -31,7 +31,6 @@ npm i
 
 ```
 DB_CONNECTION=postgres
-DB_SCHEMA=nomeesquema # para Postgres
 DB_HOST=localhost
 DB_PORT=5432
 DB_USERNAME=postgres
@@ -81,10 +80,11 @@ Importe essa [collection](postman_collection.json) no Postman para saber quais o
 
 ## Todo
 
-- Fazer mapeamento/relacionamento entidades
+- Continuar na criação dos relacionamentos
 - Criar uma interface de paginação
-- Ver se é viável usar o celebrate para validar requisições
-- ver se é viável usar o class-validator para validar os models
+- adicionar o class-validator para validar os models
+- Criar Seed para popular o banco
+- Ajustar build da imagem docker
 
 ## Licença
 

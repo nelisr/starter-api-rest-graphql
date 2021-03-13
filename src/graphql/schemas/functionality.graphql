@@ -1,0 +1,43 @@
+type Functionality {
+  id: ID!
+  name: String!
+  key: String!
+}
+
+input ProfileFunctionalityInput {
+  profile: ID!
+}
+
+input FunctionalityInput {
+  name: String!
+  key: String!
+  application: ID!
+  profileFunctionality: [ProfileFunctionalityInput]!
+}
+
+input PageInput {
+  page: Int
+  size: Int
+  order: String
+  descingOrder: Boolean
+}
+
+input PageFunctionalityInput {
+  name: String
+  key: String
+}
+
+type Query {
+  showFunctionality(id: ID!): Functionality
+  listFunctionalities: [Functionality]
+  pageFunctionalities(
+    input: PageFunctionalityInput!
+    inputPage: PageInput!
+  ): [Functionality]
+}
+
+type Mutation {
+  createFunctionality(input: FunctionalityInput!): Functionality
+  updateFunctionality(id: ID!, input: FunctionalityInput!): Functionality
+  deleteFunctionality(id: ID!): Functionality
+}

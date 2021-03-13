@@ -85,6 +85,8 @@ Importe essa [collection](postman_collection.json) no Postman para saber quais o
 - adicionar o class-validator para validar os models
 - Criar Seed para popular o banco
 - Ajustar build da imagem docker
+- ver as sequences no banco que não tão de 1 em 1
+- ver update de functionality
 
 ## Licença
 

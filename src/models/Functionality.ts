@@ -14,7 +14,7 @@ export default class Functionality {
     @Column({ unique: true, nullable: false })
     public key: string;
 
-    @OneToMany(() => ProfileFunctionality, pf => pf.functionality)
+    @OneToMany(() => ProfileFunctionality, pf => pf.functionality, { cascade: true })
     public profileFunctionality: ProfileFunctionality[]
 
     @ManyToOne(() => Application, app => app.functionality, { nullable: false })
